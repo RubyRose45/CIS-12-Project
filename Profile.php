@@ -19,7 +19,7 @@ and open the template in the editor.
             <a class="active" href="#">Profile</a>          
             <a href="Register.php">Register</a>
         </div>
-        
+
         <h1>Index</h1>
         <?php
         // put your code here

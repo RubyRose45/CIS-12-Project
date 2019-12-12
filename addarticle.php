@@ -1,10 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
 <html lang="zxx" class="no-js">
     <?php include "dbconfig.php"; ?>
     <head>
@@ -41,16 +35,7 @@ and open the template in the editor.
             <!-- Start Header Area -->
             <?php include "Header.php"; ?>
             <!-- End Header Area -->				
-            <div class="container">
-                <div class="row height align-items-center justify-content-center">
-                    <div class="col-lg-10">
-                        <div class="generic-banner-content">
-                            <h2 class="text-white text-center">CIS-12 Blog</h2>
-                            <p class="text-white">Project For The Class.</p>
-                        </div>							
-                    </div>
-                </div>
-            </div>
+
         </section>		
         <!-- End banner Area -->
 
@@ -60,53 +45,48 @@ and open the template in the editor.
             <!-- Start fashion Area -->
             <section class="fashion-area section-gap" id="fashion">
                 <div class="container">					
-                    <div class="row">
+                    <div class="row" style="margin:25px">
+                        <div class="col-lg-8 col-md-8">
+                            <h3 class="mb-30">Add New Article</h3>
+                            <form method="POST" action="handle_addarticle.php">
+                                <div class="mt-10">
+                                    <input type="text" name="title" placeholder="Title" required class="single-input"/>
+                                </div>
+                                <div class="at-10">
+                                    <select name="authorid">
+                                        <?php
+                                        $conn = new mysqli($hn, $un, $pw, $db);
 
-                        <?php
-                        $conn = new mysqli($hn, $un, $pw, $db);
-                        $result = $conn->query("select * from article");
+                                        // Check Connection
+                                        if ($conn->connect_error) {
+                                            die("Connection Failed: " . $conn->connect_error);
+                                        }
 
-                        $rows = $result->num_rows;
+                                        $result = $conn->query("SELECT * FROM author");
 
-                        for ($j = 0; $j < $rows; ++$j) {
-                            $rows = $result->fetch_array(MYSQLI_ASSOC);
-
-                            echo <<<_END
-                                                    <div class="col-lg-3 col-md-6 single-fashion">
-							<img class="img-fluid" src="img/f1.jpg" alt="">
-							<p class="date">10 Jan 2018</p>
-                                                        <h4><a href="Article.php">Addiction When Gambling
-							Becomes A Problem</a></h4>
-							<p>
-								inappropriate behavior ipsum dolor sit amet, consectetur.
-							</p>
-							<div class="meta-bottom d-flex justify-content-between">
-								<p><span class="lnr lnr-heart"></span> 15 Likes</p>
-								<p><span class="lnr lnr-bubble"></span> 02 Comments</p>
-							</div>									
-                                                    </div>
-_END;
-                        }
-                        ?>
+                                        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+                                            echo "<option value=" . $row['id'] . ">" . $row['firstname'] . " " . $row['lastname'] . "</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                    <div class="mt-10">
+                                        <input type="submit">
+                                    </div>
+                                    <div class="mt-10">
+                                        <textarea name="textbox" placeholder="Add Text" required class="single-input" rows="10"></textarea>
+                                    </div>
+                            </form>
+                        </div>
                     </div>
                 </div>	
             </section>
             <!-- End fashion Area -->			
 
             <!-- Start Generic Area -->
-            <section class="about-generic-area pb-100">
-                <div class="container border-top-generic">
-                    <h3 class="about-title mb-30">About Page</h3>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="img-text">
-                                <img src="img/a.jpg" alt="" class="img-fluid float-left mr-20 mb-20">
-                                <p>This my blog, hope you enjoy what you find here.</p>						 
-                            </div>
-                        </div>
-                    </div>
+            <div class ="main-wrapper">
+                <div class ="section">
                 </div>
-            </section>
+            </div>
             <!-- End Generic Start -->		
 
             <!-- start footer Area -->		

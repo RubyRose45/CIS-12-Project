@@ -1,28 +1,95 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
+<html lang="zxx" class="no-js">
+    <?php include "dbconfig.php"; ?>
     <head>
-        <link href="Assets/Style.css" rel="stylesheet" type="text/css"/>
+        <!-- Mobile Specific Meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Favicon-->
+        <link rel="shortcut icon" href="img/elements/fav.png">
+        <!-- Author Meta -->
+        <meta name="author" content="colorlib">
+        <!-- Meta Description -->
+        <meta name="description" content="">
+        <!-- Meta Keyword -->
+        <meta name="keywords" content="">
+        <!-- meta character set -->
         <meta charset="UTF-8">
-        <title></title>
+        <!-- Site Title -->
+        <title>My Blog</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+        <!--
+        CSS
+        ============================================= -->
+        <link rel="stylesheet" href="css/linearicons.css">
+        <link rel="stylesheet" href="css/owl.carousel.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/nice-select.css">			
+        <link rel="stylesheet" href="css/magnific-popup.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/main.css">
     </head>
-    <body>
-        <div class="topnav">   
-            <a href="Article.php">Article</a>
-            <a href="Articles.php">Articles</a>
-            <a href="Index.php">Index</a>
-            <a href="Login.php">Login</a>
-            <a href="Profile.php">Profile</a>
-            <a class="active" href="#">Register</a>
+    <body>  
+        <!-- Start banner Area -->
+        <section class="generic-banner relative">
+            <!-- Start Header Area -->
+            <?php include "Header.php"; ?>
+            <!-- End Header Area -->				
+
+        </section>		
+        <!-- End banner Area -->
+
+        <!-- About Generic Start -->
+        <div class="main-wrapper">
+
+            <!-- Start fashion Area -->
+            <section class="fashion-area section-gap" id="fashion">
+                <div class="container">					
+                    <div class="row" style="margin:25px">
+                        <div class="col-lg-8 col-md-8">
+                            <h3 class="mb-30">Register New Account</h3>
+                            <form method="POST" action="handle_register.php">
+                                <div class="mt-10" >
+                                    <input type="text" name="newusername" placeholder="New Username" required class="single-input"/>
+                                </div>
+                                <div class="mt-10">
+                                    <input type="text" name="newpassword" placeholder="New Password" required class="single-input"/>
+                                </div>
+                                <div class="mt-10">
+                                    <input type="submit">
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End fashion Area -->			
+
+            <!-- Start Generic Area -->
+            <div class ="main-wrapper">
+                <div class ="section">
+                    <div class="row" style="margin:25px">
+                        <div class="col-lg-8 col-md-8">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <h1>Index</h1>
-        <?php
-        // put your code here
-        ?>
+        <!-- End Generic Start -->		
+
+        <!-- start footer Area -->		
+        <?php include "Footer.php"; ?>
+        <!-- End footer Area -->		
+
+        <script src="js/vendor/jquery-2.2.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/jquery.ajaxchimp.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/jquery.nice-select.min.js"></script>
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <script src="js/main.js"></script>
     </body>
 </html>

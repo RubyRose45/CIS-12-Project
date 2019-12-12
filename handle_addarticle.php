@@ -1,10 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
 <html lang="zxx" class="no-js">
     <?php include "dbconfig.php"; ?>
     <head>
@@ -42,14 +36,6 @@ and open the template in the editor.
             <?php include "Header.php"; ?>
             <!-- End Header Area -->				
             <div class="container">
-                <div class="row height align-items-center justify-content-center">
-                    <div class="col-lg-10">
-                        <div class="generic-banner-content">
-                            <h2 class="text-white text-center">CIS-12 Blog</h2>
-                            <p class="text-white">Project For The Class.</p>
-                        </div>							
-                    </div>
-                </div>
             </div>
         </section>		
         <!-- End banner Area -->
@@ -58,35 +44,29 @@ and open the template in the editor.
         <div class="main-wrapper">
 
             <!-- Start fashion Area -->
-            <section class="fashion-area section-gap" id="fashion">
-                <div class="container">					
-                    <div class="row">
-
+            <section class="fashion-area section-gap" id="fashion">                    
+                <div class="row" style="margin:25px">
+                    <div class="col-lg-8 col-md-8">
+                        <h3 class="mb-30">New Article Added</h3>
                         <?php
+                        // Add to DB
                         $conn = new mysqli($hn, $un, $pw, $db);
-                        $result = $conn->query("select * from article");
 
-                        $rows = $result->num_rows;
-
-                        for ($j = 0; $j < $rows; ++$j) {
-                            $rows = $result->fetch_array(MYSQLI_ASSOC);
-
-                            echo <<<_END
-                                                    <div class="col-lg-3 col-md-6 single-fashion">
-							<img class="img-fluid" src="img/f1.jpg" alt="">
-							<p class="date">10 Jan 2018</p>
-                                                        <h4><a href="Article.php">Addiction When Gambling
-							Becomes A Problem</a></h4>
-							<p>
-								inappropriate behavior ipsum dolor sit amet, consectetur.
-							</p>
-							<div class="meta-bottom d-flex justify-content-between">
-								<p><span class="lnr lnr-heart"></span> 15 Likes</p>
-								<p><span class="lnr lnr-bubble"></span> 02 Comments</p>
-							</div>									
-                                                    </div>
-_END;
+                        // Check connection
+                        if ($conn->connect_error) {
+                            die("Connection failed: " . $conn->connect_error);
                         }
+
+                        $stmt = $conn->prepare("INSERT INTO article (text, authorid, title) VALUES (?, ?, ?)");
+                        $stmt->bind_param("sis", $text, $authorid, $title);
+
+                        $title = $_POST["title"];
+                        $authorid = $_POST["authorid"];
+                        $text = $_POST["textbox"];
+                        $stmt->execute();
+
+                        $stmt->close();
+                        $conn->close();
                         ?>
                     </div>
                 </div>	
@@ -94,19 +74,11 @@ _END;
             <!-- End fashion Area -->			
 
             <!-- Start Generic Area -->
-            <section class="about-generic-area pb-100">
-                <div class="container border-top-generic">
-                    <h3 class="about-title mb-30">About Page</h3>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="img-text">
-                                <img src="img/a.jpg" alt="" class="img-fluid float-left mr-20 mb-20">
-                                <p>This my blog, hope you enjoy what you find here.</p>						 
-                            </div>
-                        </div>
-                    </div>
+            <div class ="main-wrapper">
+                <div class ="section-top-border">
+
                 </div>
-            </section>
+            </div>
             <!-- End Generic Start -->		
 
             <!-- start footer Area -->		

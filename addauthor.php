@@ -47,13 +47,13 @@
                 <div class="container">					
                     <div class="row" style="margin:25px">
                         <div class="col-lg-8 col-md-8">
-                            <h3 class="mb-30">Login</h3>
-                            <form method="POST" action="Handle_Login.php">
+                            <h3 class="mb-30">Add New Author</h3>
+                            <form method="POST" action="handle_addauthor.php">
                                 <div class="mt-10" >
-                                    <input type="text" name="username" placeholder="Username" required class="single-input"/>
+                                    <input type="text" name="first_name" placeholder="First Name" required class="single-input"/>
                                 </div>
                                 <div class="mt-10">
-                                    <input type="text" name="password" placeholder="Password" required class="single-input"/>
+                                    <input type="text" name="last_name" placeholder="Last Name" required class="single-input"/>
                                 </div>
                                 <div class="mt-10">
                                     <input type="submit">
